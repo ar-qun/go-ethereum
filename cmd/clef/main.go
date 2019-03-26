@@ -410,6 +410,7 @@ func signer(c *cli.Context) error {
 		c.GlobalInt64(utils.NetworkIdFlag.Name),
 		c.GlobalString(keystoreFlag.Name),
 		c.GlobalBool(utils.NoUSBFlag.Name),
+		c.GlobalBool(utils.LedgerLegacyHDDerivationPath.Name),
 		ui, db,
 		c.GlobalBool(utils.LightKDFFlag.Name),
 		c.GlobalBool(advancedMode.Name))

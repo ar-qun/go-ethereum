@@ -143,6 +143,7 @@ func setup(t *testing.T) (*SignerAPI, chan string) {
 			1,
 			tmpDirName(t),
 			true,
+			true,
 			ui,
 			db,
 			true, true)

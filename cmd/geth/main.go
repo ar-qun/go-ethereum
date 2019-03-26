@@ -61,6 +61,7 @@ var (
 		utils.DataDirFlag,
 		utils.KeyStoreDirFlag,
 		utils.NoUSBFlag,
+		utils.LedgerLegacyHDDerivationPath,
 		utils.DashboardEnabledFlag,
 		utils.DashboardAddrFlag,
 		utils.DashboardPortFlag,
@@ -320,8 +321,8 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 				log.Info("New wallet appeared", "url", event.Wallet.URL(), "status", status)
 
 				derivationPath := accounts.DefaultBaseDerivationPath
-				if event.Wallet.URL().Scheme == "ledger" {
-					derivationPath = accounts.DefaultLedgerBaseDerivationPath
+				if event.Wallet.URL().Scheme == "ledger" && ctx.GlobalIsSet(utils.LedgerLegacyHDDerivationPath.Name) {
+					derivationPath = accounts.DefaultLegacyLedgerBaseDerivationPath
 				}
 				event.Wallet.SelfDerive(derivationPath, stateReader)
 
